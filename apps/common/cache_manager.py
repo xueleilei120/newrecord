@@ -13,7 +13,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from notes.models import Notes
 
 RUNNING_TIMER = False
-REDIS_DB = redis.StrictRedis(host='localhost', port=6379, db=2)
+REDIS_DB = redis.StrictRedis(host='127.0.0.1', port=6379, db=2)
 
 
 class CacheMannager(object):

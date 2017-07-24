@@ -44,7 +44,7 @@ class NotesView(View):
         except PageNotAnInteger:
             page = 1
 
-        p = Paginator(all_notes, 2, request=request)
+        p = Paginator(all_notes, 3, request=request)
 
         notes = p.page(page)
         return render(request, 'note-list.html', {
