@@ -8,10 +8,10 @@ from django.core.urlresolvers import reverse
 
 from notes.models import Notes, Category
 from notes.forms import NodeEditorForm
-from common.cache_manager import CacheMannager
+# from common.cache_manager import CacheMannager
 # Create your views here.
 
-CHACHE_MANAGER = CacheMannager()
+# CHACHE_MANAGER = CacheMannager()
 
 
 class NotesView(View):
