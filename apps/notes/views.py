@@ -56,7 +56,9 @@ class NotesDetailView(View):
     def get(self, request, note_id):
         note = get_object_or_404(Notes, id=int(note_id))
         # 增加点击数
-        CHACHE_MANAGER.update_click(note)
+        # CHACHE_MANAGER.update_click(note)
+        note.click_nums += 1
+        note.save()
         return render(request, 'node-detail.html', {
             'note': note,
         })
