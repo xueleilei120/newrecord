@@ -10,25 +10,25 @@ from users.models import UserProfile
 
 
 class Tag(models.Model):
+    class Meta:
+        verbose_name = '标签'
+        verbose_name_plural = '标签'
+
     name = models.CharField(max_length=40, default="", verbose_name=u"笔记标签")
 
     def __unicode__(self):
         return self.name
 
-    class Meta:
-        verbose_name = u'标签'
-        verbose_name_plural = u'标签'
-
 
 class Category(models.Model):
+    class Meta:
+        verbose_name = '分类'
+        verbose_name_plural = '分类'
+
     name = models.CharField(max_length=40, default="", verbose_name=u"分类")
 
     def __unicode__(self):
         return self.name
-
-    class Meta:
-        verbose_name = u'分类'
-        verbose_name_plural = u'分类'
 
 
 class Notes(models.Model):
@@ -37,7 +37,7 @@ class Notes(models.Model):
     content = UEditorField(verbose_name=u'笔记内容', width=600, height=300,
                            imagePath="contents/ueditor/", filePath="contents/ueditor/", default='')
     fav_nums = models.IntegerField(default=0, verbose_name=u"收藏人数")
-    image = models.ImageField(upload_to="notes/%Y/%m", verbose_name=u"封面图", default='images/default.jpg')
+    image = models.ImageField(upload_to="notes/%Y/%m", verbose_name=u"封面图", default="images/default.jpg")
     click_nums = models.IntegerField(default=0, verbose_name=u"点击数")
     tag = models.ManyToManyField(Tag)
     category = models.ForeignKey(Category)

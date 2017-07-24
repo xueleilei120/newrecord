@@ -77,6 +77,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.core.context_processors.media',
+                'common.context_processors.common_info',
             ],
         },
     },
@@ -98,7 +99,7 @@ WSGI_APPLICATION = 'newrecord.wsgi.application'
 #         'HOST': '127.0.0.1',
 #     }
 # }
-
+#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',

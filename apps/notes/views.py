@@ -8,7 +8,10 @@ from django.core.urlresolvers import reverse
 
 from notes.models import Notes, Category
 from notes.forms import NodeEditorForm
+from common.cache_manager import CacheMannager
 # Create your views here.
+
+CHACHE_MANAGER = CacheMannager()
 
 
 class NotesView(View):
@@ -43,22 +46,17 @@ class NotesView(View):
 
         p = Paginator(all_notes, 2, request=request)
 
-        all_categorys = Category.objects.all()
-
         notes = p.page(page)
         return render(request, 'note-list.html', {
             'all_notes': notes,
-            'all_categorys': all_categorys,
         })
 
 
 class NotesDetailView(View):
     def get(self, request, note_id):
-        note = Notes.objects.get(id=int(note_id))
-
+        note = get_object_or_404(Notes, id=int(note_id))
         # 增加点击数
-        note.click_nums += 1
-        note.save()
+        CHACHE_MANAGER.update_click(note)
         return render(request, 'node-detail.html', {
             'note': note,
         })
@@ -141,3 +139,16 @@ class SearchNotesView(View):
         return render(request, 'node_editor.html', {
             'form': note_form,
         })
+class DeleteNoteView(View):
+    """
+    删除文章
+    """
+    def get(self, request, note_id):
+        # 用户是否登陆
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect(reverse("login"))
+        note = get_object_or_404(Notes, id=int(note_id))
+        note.delete()
+        return redirect("/notes/list/")
+
+

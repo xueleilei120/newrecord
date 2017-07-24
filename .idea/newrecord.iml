@@ -15,15 +15,10 @@
       <sourceFolder url="file://$MODULE_DIR$/apps" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/extra_apps" isTestSource="false" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 2.7.13 virtualenv at C:\Envs\newrecord2" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="TemplatesService">
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
-    <option name="TEMPLATE_FOLDERS">
-      <list>
-        <option value="$MODULE_DIR$/../newrecord\templates" />
-      </list>
-    </option>
   </component>
 </module>

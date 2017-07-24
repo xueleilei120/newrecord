@@ -25,6 +25,12 @@
                                     <p>&nbsp; &nbsp;{{ note.content }}</p>
                                 {% endautoescape %}
                             </div>
+                            <br>
+                                <div class="post-permalink">
+                                    <a href="{% url 'notes:note_editor' note.id %}" class="btn btn-default">编辑</a>
+                                    <a href="{% url 'notes:note_delete' note.id %}" class="btn btn-default" onclick="return confirm('确定删除文章吗？');">删除</a>
+                                </div>
+                            <HR>
                         </article>
 
 					</main>

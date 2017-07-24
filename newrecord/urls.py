@@ -47,3 +47,4 @@ urlpatterns = [
     # 邮箱验证码
     url(r'^captcha/', include('captcha.urls')),
 ]
+

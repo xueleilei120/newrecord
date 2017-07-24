@@ -27,6 +27,11 @@
                                         <img src="{{ MEDIA_URL }}{{ note.image }}">
                                     </a>
                                 </div>
+                                <div class="post-content">
+                                    {% autoescape off %}
+                                        <p>{{ note.content|truncatewords:150 }}</p>
+                                    {% endautoescape %}
+                                </div>
                                 <br>
                                 <div class="post-permalink">
                                     <a href="{% url 'notes:note_detail' note.id %}" class="btn btn-default">阅读全文</a>
@@ -59,9 +64,17 @@
 						<!-- start tag cloud widget -->
                         <div class="widget">
                             <h4 class="title">分类</h4>
-                            {% for category in all_categorys %}
-                                <a href="?category_name={{ category.name }}" class="btn btn-default btn-block" >{{ category.name }}</a>
+                            {% for category in ALL_CATEGORYS %}
+                                <a href="?category_name={{ category.name }}" class="btn btn-default btn-block" >{{ category.name }}({{ category.note_num }})</a>
                             {% endfor %}
+                        </div>
+                        <div class="widget">
+                            <h4 class="title">最热门</h4>
+                            <div class="content community">
+                                {% for note in  HOT_NODES %}
+                                    <p><a href="{% url 'notes:note_detail' note.id %}" >{{ note.name|truncatewords:5 }}</a>({{ note.click_nums }})</p>
+                                {% endfor %}
+                            </div>
                         </div>
 						<div class="widget">
 							<h4 class="title">个人</h4>

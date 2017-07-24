@@ -19,8 +19,8 @@ class NodeEditorForm(forms.ModelForm):
         labels = {
             'name': '标题',
             'image': '封面图',
-            'category': '笔记类别',
-            'tag': '笔记标签',
+            'category': '笔记类别(必选)',
+            'tag': '笔记标签(必选)',
             'content': '笔记内容',
             'is_public': '是否公开',
         }
